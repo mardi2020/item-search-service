@@ -1,0 +1,21 @@
+{
+  "properties": {
+    "id": {
+      "type": "long"
+    },
+    "hashtags": {
+      "type": "keyword",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "count": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "long"
+    }
+  }
+}
