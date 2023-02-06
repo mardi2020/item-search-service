@@ -1,0 +1,17 @@
+{
+  "properties": {
+    "userId": {
+      "type": "long"
+    },
+    "name": {
+      "type": "text",
+      "analyzer": "korean"
+    },
+    "loginId": {
+      "type": "text"
+    },
+    "followerCount": {
+      "type": "long"
+    }
+  }
+}
