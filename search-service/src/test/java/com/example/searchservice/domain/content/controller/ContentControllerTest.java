@@ -61,7 +61,7 @@ class ContentControllerTest {
         final String hashtag = "아이유";
 
         // when
-        String api = "http://localhost:" + port + "?q=" + hashtag;
+        String api = "http://localhost:" + port + "/contents?q=" + hashtag;
         ExtractableResponse<Response> response = get(api);
 
         // then
