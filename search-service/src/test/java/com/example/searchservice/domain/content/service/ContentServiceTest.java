@@ -7,6 +7,7 @@ import com.example.searchservice.domain.content.dto.response.ContentResponse;
 import com.example.searchservice.domain.content.dto.response.HashtagResponse;
 import com.example.searchservice.domain.content.repository.ContentRepository;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,25 +27,27 @@ class ContentServiceTest {
     @Autowired
     private ContentService contentService;
 
-    @DisplayName("해시태그가 포함된 게시글을 조회한다")
-    @Test
-    void findByHashtag() {
-        // given
-        ContentIndex contentIndex1 = ContentIndex.builder()
+    private ContentIndex contentIndex1;
+    private ContentIndex contentIndex2;
+    private ContentIndex contentIndex3;
+
+    @BeforeEach
+    void setUp() {
+        contentIndex1 = ContentIndex.builder()
                 .contentId(1L)
                 .hashtags(List.of("aaa", "bbb", "ccc", "ddd", "ee",  "아이유", "라일락"))
                 .count(50000)
                 .createdAt(1605571906149L)
                 .build();
 
-        ContentIndex contentIndex2 = ContentIndex.builder()
+        contentIndex2 = ContentIndex.builder()
                 .contentId(2L)
-                .hashtags(List.of("라일락"))
+                .hashtags(List.of("아이유라일락"))
                 .count(10)
                 .createdAt(1675652708358L)
                 .build();
 
-        ContentIndex contentIndex3 = ContentIndex.builder()
+        contentIndex3 = ContentIndex.builder()
                 .contentId(3L)
                 .hashtags(List.of("아이유"))
                 .count(10000)
@@ -53,7 +56,12 @@ class ContentServiceTest {
 
         List<ContentIndex> data = List.of(contentIndex1, contentIndex3, contentIndex2);
         contentRepository.saveAll(data);
+    }
 
+    @DisplayName("해시태그가 포함된 게시글을 조회한다")
+    @Test
+    void findByHashtag() {
+        // given
         final String hashtag = "아이유";
         Sort sort = Sort.by("createdAt").descending()
                 .and(Sort.by("count").descending());
@@ -78,30 +86,6 @@ class ContentServiceTest {
     @Test
     void countByHashtag() {
         // given
-        ContentIndex contentIndex1 = ContentIndex.builder()
-                .contentId(1L)
-                .hashtags(List.of("aaa", "bbb", "ccc", "ddd", "ee",  "아이유", "라일락"))
-                .count(50000)
-                .createdAt(1605571906149L)
-                .build();
-
-        ContentIndex contentIndex2 = ContentIndex.builder()
-                .contentId(2L)
-                .hashtags(List.of("라일락"))
-                .count(10)
-                .createdAt(1675652708358L)
-                .build();
-
-        ContentIndex contentIndex3 = ContentIndex.builder()
-                .contentId(3L)
-                .hashtags(List.of("아이유"))
-                .count(10000)
-                .createdAt(1675652691641L)
-                .build();
-
-        List<ContentIndex> data = List.of(contentIndex1, contentIndex3, contentIndex2);
-        contentRepository.saveAll(data);
-
         final String keyword = "아이유";
 
         // when

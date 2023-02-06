@@ -9,6 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,10 +31,8 @@ class ContentControllerTest {
     @Autowired
     private ContentRepository contentRepository;
 
-    @DisplayName("해시태그가 포함된 게시글을 20개씩 조회한다")
-    @Test
-    void findByHashtag() {
-        // given
+    @BeforeEach
+    void setUp() {
         ContentIndex contentIndex1 = ContentIndex.builder()
                 .contentId(1L)
                 .hashtags(List.of("aaa", "bbb", "ccc", "ddd", "ee",  "아이유", "라일락"))
@@ -57,7 +56,12 @@ class ContentControllerTest {
 
         List<ContentIndex> data = List.of(contentIndex1, contentIndex3, contentIndex2);
         contentRepository.saveAll(data);
+    }
 
+    @DisplayName("해시태그가 포함된 게시글을 20개씩 조회한다")
+    @Test
+    void findByHashtag() {
+        // given
         final String hashtag = "아이유";
 
         // when
