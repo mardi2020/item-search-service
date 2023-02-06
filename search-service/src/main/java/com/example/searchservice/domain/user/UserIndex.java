@@ -27,7 +27,7 @@ public class UserIndex {
     @Field(type = FieldType.Text)
     private String name;
 
-    @Field(type = FieldType.Text)
+    @Field(type = FieldType.Keyword)
     private String loginId;
 
     @Field(type = FieldType.Long)

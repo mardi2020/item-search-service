@@ -8,7 +8,7 @@
       "analyzer": "korean"
     },
     "loginId": {
-      "type": "text"
+      "type": "keyword"
     },
     "followerCount": {
       "type": "long"
