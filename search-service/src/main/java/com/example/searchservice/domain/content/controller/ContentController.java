@@ -1,7 +1,6 @@
 package com.example.searchservice.domain.content.controller;
 
 
-import com.example.searchservice.domain.content.ContentIndex;
 import com.example.searchservice.domain.content.dto.response.ContentResponse;
 import com.example.searchservice.domain.content.service.ContentService;
 import java.util.List;
@@ -13,12 +12,14 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
 @Slf4j
+@RequestMapping("/contents")
 public class ContentController {
 
     private final ContentService contentService;
