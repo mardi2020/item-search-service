@@ -15,7 +15,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public List<UserResponse> findAllByKeyword(String keyword, Pageable pageable) {
-        return userRepository.findAllByKeywordUsingQuery(keyword, pageable)
+        return userRepository.findAllByNameOrLoginIdUsingQuery(keyword, pageable)
                 .stream()
                 .map(UserResponse::new)
                 .collect(Collectors.toList());

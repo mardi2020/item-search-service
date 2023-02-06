@@ -2,7 +2,6 @@ package com.example.searchservice.domain.user.dto.response;
 
 import com.example.searchservice.domain.user.UserIndex;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +18,6 @@ public class UserResponse {
 
     private Long followerCount;
 
-    @Builder
     public UserResponse(UserIndex userIndex) {
         this.userId = userIndex.getUserId();
         this.name = userIndex.getName();

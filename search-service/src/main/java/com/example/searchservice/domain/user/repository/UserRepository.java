@@ -8,6 +8,6 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
 public interface UserRepository extends ElasticsearchRepository<UserIndex, Long> {
 
-    @Query(value = "{\"bool\": {\"must_not\": [{\"term\": {\"name\": \"?0\"}}, {\"term\": {\"loginId\": \"?0\"}} ] }}")
-    List<UserIndex> findAllByKeywordUsingQuery(String keyword, Pageable pageable);
+    @Query(value = "{\"bool\": {\"should\": [{\"match\": {\"name\": \"?0\" }},{\"match\": {\"loginId\": \"?0\"}}]}}")
+    List<UserIndex> findAllByNameOrLoginIdUsingQuery(String keyword, Pageable pageable);
 }
