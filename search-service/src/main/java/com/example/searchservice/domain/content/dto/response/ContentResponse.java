@@ -21,13 +21,6 @@ public class ContentResponse {
 
     private String createdAt;
 
-    public ContentResponse(Long contentId, List<String> hashtags, int count, Long createdAt) {
-        this.contentId = contentId;
-        this.hashtags = hashtags;
-        this.count = count;
-        this.createdAt = toStringDate(createdAt);
-    }
-
     public ContentResponse(ContentIndex contentIndex) {
         this.contentId = contentIndex.getContentId();
         this.hashtags = contentIndex.getHashtags();

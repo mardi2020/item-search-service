@@ -2,6 +2,7 @@ package com.example.searchservice.domain.content.service;
 
 
 import com.example.searchservice.domain.content.dto.response.ContentResponse;
+import com.example.searchservice.domain.content.dto.response.HashtagResponse;
 import com.example.searchservice.domain.content.repository.ContentRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +19,12 @@ public class ContentService {
     public List<ContentResponse> findByHashtag(String hashtagName, Pageable pageable) {
         return contentRepository.findAllByHashtagUsingQuery(hashtagName, pageable)
                 .stream()
-                .map(e -> new ContentResponse(e.getContentId(), e.getHashtags(), e.getCount(), e.getCreatedAt()))
+                .map(ContentResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    public HashtagResponse findHashtagInfo(String keyword) {
+        Long count = contentRepository.countByHashtagsUsingQuery(keyword);
+        return new HashtagResponse(keyword, count);
     }
 }
