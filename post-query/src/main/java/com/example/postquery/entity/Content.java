@@ -1,6 +1,7 @@
 package com.example.postquery.entity;
 
 import java.util.List;
+import java.util.Set;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +34,7 @@ public class Content {
 
     private List<ImageUrl> imageUrl;
 
-    private List<Long> hashtags;
+    private Set<Long> hashtags;
 
     private Boolean visibleLikes;
 
@@ -52,7 +53,7 @@ public class Content {
         }
     }
 
-    public void updateHashtags(List<Long> hashtags) {
+    public void updateHashtags(Set<Long> hashtags) {
         this.hashtags = hashtags;
     }
 
