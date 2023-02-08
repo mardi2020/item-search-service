@@ -1,0 +1,29 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MYSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  h2:
+    console:
+      enabled: true
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: earliest
+      bootstrap-servers: localhost:9092
+      enable-auto-commit: false
+    listener:
+      ack-mode: manual
