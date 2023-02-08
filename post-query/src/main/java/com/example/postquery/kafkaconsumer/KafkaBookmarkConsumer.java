@@ -1,4 +1,4 @@
-package com.example.postquery.service;
+package com.example.postquery.kafkaconsumer;
 
 import com.example.postquery.entity.Bookmark;
 import com.example.postquery.exception.BookmarkNotFoundException;
