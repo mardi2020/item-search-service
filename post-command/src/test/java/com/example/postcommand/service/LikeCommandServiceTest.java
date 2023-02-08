@@ -11,6 +11,7 @@ import com.example.postcommand.exception.LikeDuplicatedException;
 import com.example.postcommand.repository.ContentCommandRepository;
 import com.example.postcommand.repository.LikeCommandRepository;
 import com.example.postcommand.util.ValidCheckUtil;
+import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -47,6 +48,7 @@ class LikeCommandServiceTest {
                 .userId(1L)
                 .visibleComments(false)
                 .visibleLikes(true)
+                .hashtags(new HashSet<>())
                 .build();
 
         contentCommandRepository.save(content);
@@ -97,6 +99,7 @@ class LikeCommandServiceTest {
                 .userId(userId)
                 .build();
         likeCommandRepository.save(contentLike);
+
         Content content = contentCommandRepository.findById(contentId)
                 .orElseThrow(ContentNotFoundException::new);
         content.increaseLikes();

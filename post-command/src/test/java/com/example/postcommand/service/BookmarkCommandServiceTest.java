@@ -12,6 +12,7 @@ import com.example.postcommand.repository.BookmarkCommandRepository;
 import com.example.postcommand.repository.ContentCommandRepository;
 import com.example.postcommand.util.ValidCheckUtil;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,11 +41,12 @@ class BookmarkCommandServiceTest {
         Content content = Content.builder()
                 .id(1L)
                 .likes(0)
-                .text("변경전 텍스트")
+                .text("변경전 텍스트 #aaa")
                 .imageUrl(List.of(new ImageUrl("http://test.jikji/before-image", 1, 1L)))
                 .userId(1L)
                 .visibleComments(false)
                 .visibleLikes(true)
+                .hashtags(Set.of(1L))
                 .build();
 
         contentRepository.save(content);
