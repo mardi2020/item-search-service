@@ -23,4 +23,9 @@ public class Hashtag {
     private Long hashtagId;
 
     private String name;
+
+    public Hashtag(Long hashtagId, String name) {
+        this.hashtagId = hashtagId;
+        this.name = name;
+    }
 }
