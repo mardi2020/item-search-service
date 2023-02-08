@@ -24,7 +24,10 @@ public class Hashtag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, updatable = false, length = 10)
+    @Column(nullable = false, updatable = false, unique = true, length = 10)
     private String name;
 
+    public Hashtag(String name) {
+        this.name = name;
+    }
 }
